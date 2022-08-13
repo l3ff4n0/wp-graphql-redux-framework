@@ -1,8 +1,6 @@
 
 # GraphQL for Redux Framework plugin
 
-:rotating_light: Under development :rotating_light:
-
 Adds WPGraphQL support for [Redux Framework](https://redux.io/).
 
 ## System Requirements
@@ -19,6 +17,5 @@ Adds WPGraphQL support for [Redux Framework](https://redux.io/).
 3. Download the zip of this repository, upload it to your WordPress install, and activate the plugin.
 
 ## Compatibility
-
-- [x] Add notices for WordPress GraphQL plugins dependencies
-- [ ] WP Gatsby
+- [x] Add notices for WordPress [WPGraphQL](https://wordpress.org/plugins/wp-graphql/) and [Redux Framework](https://redux.io/) plugins dependencies
+- [x] [WPGatsby plugin](https://wordpress.org/plugins/wp-gatsby/)

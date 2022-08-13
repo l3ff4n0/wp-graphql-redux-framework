@@ -7,7 +7,7 @@
  * Author: Stefano Frasson Pianizzola
  * Author URI: https://www.stefanofp.com
  * Text Domain: wp-graphql-redux
- * Version: 0.0.1-alpha
+ * Version: 1.0.0
  * Requires at least: 5.0
  * Tested up to: 6.0.1
  * Requires PHP: 7.0
@@ -64,7 +64,7 @@ add_action( 'plugins_loaded', function() {
 
 	add_action( 'redux/loaded', function( $redux ) {
 
-		global $opt_name;
+		$GLOBALS['opt_name'] = $redux->args['opt_name'];
     
 
 		if ( ! isset( $redux->sections ) || empty( $redux->sections ) ) {
@@ -126,9 +126,40 @@ add_action( 'plugins_loaded', function() {
 				] );
 
 			}
+		}
 
+		if(class_exists('WPGatsby')){
+			class ReduxFrameWorkActionMonitor extends \WPGatsby\ActionMonitor\Monitors\Monitor {
+		
+
+			/**
+			 * Initialize the custom tracker.
+			 */
+			public function init() {
+				add_action( 'redux/options/'. $GLOBALS['opt_name'] .'/saved', [ $this, 'track_redux_save' ], 10, 2 );
+			}
+
+
+			/**
+			 * Track a Redux save.
+			 *
+			 */
+			public function track_redux_save() {
+				$this->trigger_non_node_root_field_update(
+					[
+						'title' => __( 'Update Redux fields', 'WPGatsby'),
+					]
+				);
+			}
+		}
+		
+		add_filter( 'gatsby_action_monitors', function( array $monitors, \WPGatsby\ActionMonitor\ActionMonitor $action_monitor) {
+			$monitors['ReduxFrameWorkActionMonitor'] = new ReduxFrameWorkActionMonitor( $action_monitor );
+		
+			return $monitors;
+		}, 10, 2 );
 		}
 
 	} );
-	
-} );
+
+	} );
