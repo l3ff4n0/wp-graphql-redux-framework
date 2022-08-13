@@ -1,4 +1,3 @@
-
 # GraphQL for Redux Framework plugin
 
 Adds WPGraphQL support for [Redux Framework](https://redux.io/).

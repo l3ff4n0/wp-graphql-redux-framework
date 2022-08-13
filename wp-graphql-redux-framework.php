@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: WP GraphQL Redux Framework
  * Plugin URI: https://github.com/l3ff4n0/wp-graphql-redux-framework
@@ -23,10 +22,12 @@ if (!defined('ABSPATH')) {
  * Checks if all the the required plugins are installed and activated.
  */
 function graphql_redux_framework_dependencies(){
+	
 	if (!class_exists('Redux') && !class_exists('WPGraphQL')) {
 		add_action('admin_notices', 'graphql_redux_framework_dependencies_notice');
 		return false;
 	}
+
 	if (!class_exists('WPGraphQL')) {
 		add_action('admin_notices', 'graphql_redux_framework_dependencies_notice');
 		return false;
@@ -52,8 +53,9 @@ function graphql_redux_framework_dependencies_notice(){ ?>
 	</div>
 <?php }
 
-
-
+/**
+ * Checks if the plugin is installed and activated.
+ */
 add_action( 'plugins_loaded', function() {
 
 	graphql_redux_framework_dependencies();
@@ -131,14 +133,12 @@ add_action( 'plugins_loaded', function() {
 		if(class_exists('WPGatsby')){
 			class ReduxFrameWorkActionMonitor extends \WPGatsby\ActionMonitor\Monitors\Monitor {
 		
-
 			/**
 			 * Initialize the custom tracker.
 			 */
 			public function init() {
 				add_action( 'redux/options/'. $GLOBALS['opt_name'] .'/saved', [ $this, 'track_redux_save' ], 10, 2 );
 			}
-
 
 			/**
 			 * Track a Redux save.
@@ -162,4 +162,4 @@ add_action( 'plugins_loaded', function() {
 
 	} );
 
-	} );
+});
