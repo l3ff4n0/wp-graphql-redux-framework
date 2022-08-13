@@ -8,19 +8,63 @@
  * Author URI: https://www.stefanofp.com
  * Text Domain: wp-graphql-redux
  * Version: 0.0.1-alpha
-*/
+ * Requires at least: 5.0
+ * Tested up to: 6.0.1
+ * Requires PHP: 7.0
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+ */
 
 if (!defined('ABSPATH')) {
     exit();
 }
 
+/**
+ * Checks if all the the required plugins are installed and activated.
+ */
+function graphql_redux_framework_dependencies(){
+	if (!class_exists('Redux') && !class_exists('WPGraphQL')) {
+		add_action('admin_notices', 'graphql_redux_framework_dependencies_notice');
+		return false;
+	}
+	if (!class_exists('WPGraphQL')) {
+		add_action('admin_notices', 'graphql_redux_framework_dependencies_notice');
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Displays a notice if the required plugins are not installed and activated.
+ */
+function graphql_redux_framework_dependencies_notice(){ ?>
+	<div class="notice notice-error">
+		<p>
+			<?php
+				printf(
+					__('The %s plugin requires the %s and %s plugins to be installed and activated.', 'wp-graphql-redux'),
+					'<strong>Redux Framework</strong>',
+					'<strong>WPGraphQL</strong>',
+				);
+			?>
+		</p>
+	</div>
+<?php }
+
+
+
 add_action( 'plugins_loaded', function() {
+
+	graphql_redux_framework_dependencies();
 
 	if ( ! class_exists( 'Redux' ) ) {
 		return;
 	}
 
 	add_action( 'redux/loaded', function( $redux ) {
+
+		global $opt_name;
     
 
 		if ( ! isset( $redux->sections ) || empty( $redux->sections ) ) {
@@ -86,5 +130,5 @@ add_action( 'plugins_loaded', function() {
 		}
 
 	} );
-
+	
 } );
