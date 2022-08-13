@@ -20,5 +20,5 @@ Adds WPGraphQL support for [Redux Framework](https://redux.io/).
 
 ## Compatibility
 
-- [x] Add notices for WordPress GraphQL plugins dependecy
+- [x] Add notices for WordPress GraphQL plugins dependencies
 - [ ] WP Gatsby
