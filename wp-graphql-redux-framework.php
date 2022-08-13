@@ -102,7 +102,7 @@ add_action( 'plugins_loaded', function() {
 							'type'        => $field_type,
 							'description' => $field_description,
 							'resolve'     => function() use ( $opt_name, $redux, $setting_field ) {
-								return Redux::get_option( $opt_name, $setting_field['id'], 'goo' );
+								return Redux::getOption( $opt_name, $setting_field['id'] );
 							}
 						];
 					}
