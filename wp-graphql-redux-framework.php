@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: WP GraphQL Redux Framework
- * Plugin URI:
+ * Plugin URI: https://github.com/l3ff4n0/wp-graphql-redux-framework
  * Description: A plugin to add Redux Framework to WP GraphQL.
  * Author: Stefano Frasson Pianizzola
  * Author URI: https://www.stefanofp.com
