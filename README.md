@@ -19,6 +19,7 @@ Adds WPGraphQL support for [Redux Framework](https://redux.io/).
 ## Compatibility
 - [x] Add notices for WordPress [WPGraphQL](https://wordpress.org/plugins/wp-graphql/) and [Redux Framework](https://redux.io/) plugins dependencies
 - [x] [WPGatsby plugin](https://wordpress.org/plugins/wp-gatsby/)
+- [ ] To check the data with differents type of fields on the Redux FrameWork plugin
 
 ## How to add the redux fields on our theme and expose them to GrahQL
 

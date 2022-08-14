@@ -92,19 +92,38 @@ add_action( 'plugins_loaded', function() {
 				$fields = [];
 
 				foreach ( $section['fields'] as $setting_field ) {
-					
-					$field_type        = 'String';
-					$field_description = isset( $setting_field['desc'] ) ? $setting_field['desc'] : '';
 
+					$field_type	= isset( $setting_field['type'] ) ? $setting_field['type'] : null;
+					$field_description = isset( $setting_field['desc'] ) ? $setting_field['desc'] : '';
+					
+					$type_field ='';
+
+					if($field_type == 'media'){
+						$type_field = 'MediaItem';
+					}
+					if($field_type == 'text'){
+						$type_field = 'String';
+					}
+					
 					$field_name = isset( $setting_field['id'] ) ? \WPGraphQL\Utils\Utils::format_field_name( $setting_field['id'] ) : \WPGraphQL\Utils\Utils::format_field_name( $setting_field['title'] );
 
 
 					if ( isset($setting_field['show_in_graphql']) && $setting_field['show_in_graphql'] === true){
+
 						$fields[ $field_name ] = [
-							'type'        => $field_type,
+							'type'        => $type_field,
 							'description' => $field_description,
-							'resolve'     => function() use ( $opt_name, $redux, $setting_field ) {
-								return Redux::getOption( $opt_name, $setting_field['id'] );
+							'resolve'     => function( $source, $args, $context, $info ) use ( $opt_name, $redux, $setting_field, $type_field) {
+								
+								$value = Redux::getOption( $opt_name, $setting_field['id'], '' );
+	
+								switch ( $type_field ) {
+									case 'MediaItem':
+										return (!empty( $value['id'] )) ? $context->get_loader( 'post' )->load_deferred($value['id']) : null;
+									default:
+										return $value;
+								}
+	
 							}
 						];
 					}
