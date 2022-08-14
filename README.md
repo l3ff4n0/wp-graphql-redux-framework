@@ -1,3 +1,4 @@
+![MasterHead](https://stefanofp.com/wp-content/uploads/2022/08/wpgraphql-redux-framework.jpg)
 # GraphQL for Redux Framework plugin
 
 Adds WPGraphQL support for [Redux Framework](https://redux.io/).
