@@ -6,7 +6,7 @@
  * Author: Stefano Frasson Pianizzola
  * Author URI: https://www.stefanofp.com
  * Text Domain: wp-graphql-redux
- * Version: 1.0.0
+ * Version: 1.0.0-beta
  * Requires at least: 5.0
  * Tested up to: 6.0.1
  * Requires PHP: 7.0

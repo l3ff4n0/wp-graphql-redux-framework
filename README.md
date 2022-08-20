@@ -1,4 +1,6 @@
 ![MasterHead](https://stefanofp.com/wp-content/uploads/2022/08/wpgraphql-redux-framework.jpg)
+
+:rotating_light: THIS  IS A BETA VERSION :rotating_light:
 # GraphQL for Redux Framework plugin
 
 Adds WPGraphQL support for [Redux Framework](https://redux.io/).
@@ -20,6 +22,45 @@ Adds WPGraphQL support for [Redux Framework](https://redux.io/).
 - [x] Add notices for WordPress [WPGraphQL](https://wordpress.org/plugins/wp-graphql/) and [Redux Framework](https://redux.io/) plugins dependencies
 - [x] [WPGatsby plugin](https://wordpress.org/plugins/wp-gatsby/)
 - [ ] To check the data with differents type of fields on the Redux FrameWork plugin
+
+## Fields type supported
+- [ ] ACE Editor
+- [ ] Background
+- [ ] Border
+- [ ] Box Shadow
+- [ ] Button set
+- [ ] Cherckbox
+- [ ] Color Gradient
+- [ ] Color palette
+- [ ] Color RGBA
+- [ ] Color
+- [ ] Date
+- [ ] Dimensions
+- [ ] Divide
+- [ ] Editor
+- [ ] Gallery
+- [ ] Image Select
+- [ ] Info
+- [ ] Link Color
+- [ ] Media
+- [ ] Multi Text
+- [ ] Palette Color
+- [ ] Password
+- [ ] Radio
+- [ ] Raw
+- [ ] Section
+- [ ] Select Image
+- [ ] Select
+- [ ] Slider
+- [ ] Slides
+- [ ] Sortable
+- [ ] Sorter
+- [ ] Spacing
+- [ ] Spinner
+- [ ] Switch
+- [ ] Text
+- [ ] Textarea
+- [ ] Typography
 
 ## How to add the redux fields on our theme and expose them to GrahQL
 
